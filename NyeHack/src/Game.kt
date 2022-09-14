@@ -5,40 +5,38 @@ fun main(args: Array<String>) {
     val isBlessed = true
     val isImmortal = false
 
-    val auraVisible = isBlessed && healthPoints > 50 || isImmortal
     // Aura
-    // if (isBlessed && healthPoints > 50 || isImmortal) {
-//    if (auraVisible) {
-//        println("GREEN")
-//    } else {
-//        println("NONE")
-//    }
-    val auraColor = if (auraVisible) "GREEN" else "NOEN"
-    // println(auraColor)
+    val auraColor = auraColor(isBlessed, healthPoints, isImmortal)
+    val healthStatus = formatHealthStatus(healthPoints, isBlessed)
 
-    // if (healthPoints == 100) {
-    // こんな書き方ができるのか、意外。変数の中身を指定できる
-//    val healthStatus = if (healthPoints == 100) {
-//        " is in excellent condition"
-//
-////    } else if (healthPoints >= 90){
-//    } else if (healthPoints in 90..99){
-//        " has a few scratches"
-////    }else if (healthPoints >= 75){
-//    }else if (healthPoints in 75..89){
-//        // println(name + " has some minor wounds")
-//        if (isBlessed) {
-//           " has some minor wounds but is healing quite quickly!"
-//        } else {
-//            " has some minor wounds."
-//        }
-//    }else if (healthPoints in 17..74){
-//    // }else if (healthPoints >= 15){
-//        " looks pretty hurt"
-//    }else {
-//        " is in awful condition"
-//    }
-    val healthStatus = when (healthPoints) {
+    // Player Status
+//    printPlayerStatus(auraColor, isBlessed, name, healthStatus)
+    // 名前付き引数を定義。パラメータの順番を変更できる
+    printPlayerStatus(auraColor = auraColor, isBlessed = isBlessed, name = "Madrigal", healthStatus = healthStatus)
+
+//    castFireball(5)
+    castFireball(2)
+
+}
+
+private fun printPlayerStatus(
+    auraColor: String,
+    isBlessed: Boolean,
+    name: String,
+    healthStatus: String
+) {
+    println("(Aura: $auraColor) " + "Blessed: ${if (isBlessed) "YES" else "NO"})")
+    // 文字列テンプレートを利用
+    println("$name $healthStatus")
+}
+
+private fun auraColor(isBlessed: Boolean, healthPoints: Int, isImmortal: Boolean) =
+    if (isBlessed && healthPoints > 50 || isImmortal) "GREEN" else "NONE"
+
+// private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean): String {
+// 単一式関数として書き換える
+private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean) =
+    when (healthPoints) {
         100 -> " is in excellent condition"
         in 90..99 -> " has a few scratches"
         in 75..89 -> if (isBlessed) {
@@ -46,13 +44,19 @@ fun main(args: Array<String>) {
         } else {
             " has some minor wounds."
         }
+
         in 17..74 -> " looks pretty hurt"
         else -> " is in awful condition"
     }
+//     return healthStatus
+// }
 
-    println("(Aura: $auraColor) " + "Blessed: ${if (isBlessed) "YES" else "NO"})")
-    // 文字列テンプレートを利用
-    println("$name $healthStatus")
-//    println(name + " " + healthStatus)
+// private fun castFireball(numFireballs: Int) {
+// パラメータにデフォルト値を指定
+//private fun castFireball(numFireballs: Int = 2) {
+//    println("A glass of Fireball springs int existence. (x$numFireballs)")
+//}
+// 単一式関数として書き換える
+private fun castFireball(numFireballs: Int = 2) =
+    println("A glass of Fireball springs int existence. (x$numFireballs)")
 
-}
