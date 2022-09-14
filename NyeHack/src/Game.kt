@@ -17,19 +17,23 @@ fun main(args: Array<String>) {
     println(auraColor)
 
     // if (healthPoints == 100) {
-    // こんな書き方ができるのか、意外
+    // こんな書き方ができるのか、意外。変数の中身を指定できる
     val healthStatus = if (healthPoints == 100) {
         " is in excellent condition"
-    } else if (healthPoints >= 90){
+
+//    } else if (healthPoints >= 90){
+    } else if (healthPoints in 90..99){
         " has a few scratches"
-    }else if (healthPoints >= 75){
+//    }else if (healthPoints >= 75){
+    }else if (healthPoints in 75..89){
         // println(name + " has some minor wounds")
         if (isBlessed) {
            " has some minor wounds but is healing quite quickly!"
         } else {
             " has some minor wounds."
         }
-    }else if (healthPoints >= 15){
+    }else if (healthPoints in 17..74){
+    // }else if (healthPoints >= 15){
         " looks pretty hurt"
     }else {
         " is in awful condition"
