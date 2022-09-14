@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
 //        println("NONE")
 //    }
     val auraColor = if (auraVisible) "GREEN" else "NOEN"
-    println(auraColor)
+    // println(auraColor)
 
     // if (healthPoints == 100) {
     // こんな書き方ができるのか、意外。変数の中身を指定できる
@@ -50,5 +50,9 @@ fun main(args: Array<String>) {
         else -> " is in awful condition"
     }
 
-    println(name + " " + healthStatus)
+    println("(Aura: $auraColor) " + "Blessed: ${if (isBlessed) "YES" else "NO"})")
+    // 文字列テンプレートを利用
+    println("$name $healthStatus")
+//    println(name + " " + healthStatus)
+
 }
