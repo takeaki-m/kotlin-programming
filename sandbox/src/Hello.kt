@@ -1,5 +1,6 @@
 // entry point
 // program start at this entry point
-fun main(args: Array<String>) {
+fun helloMain() {
+
     println("hello, world");
 }
