@@ -1,4 +1,4 @@
-fun main(args: Array<String>) {
+fun gameMain() {
     val name = "Madrigal"
     var healthPoints = 100
     healthPoints = 89
@@ -9,6 +9,7 @@ fun main(args: Array<String>) {
     val auraColor = auraColor(isBlessed, healthPoints, isImmortal)
     val healthStatus = formatHealthStatus(healthPoints, isBlessed)
 
+
     // Player Status
 //    printPlayerStatus(auraColor, isBlessed, name, healthStatus)
     // 名前付き引数を定義。パラメータの順番を変更できる
@@ -16,6 +17,8 @@ fun main(args: Array<String>) {
 
 //    castFireball(5)
     castFireball(2)
+
+    return
 
 }
 
